@@ -1,0 +1,213 @@
+/*
+ * Estilos de la interfaz – tema oscuro.
+ * Los colores que se dibujan sobre Canvas están en turing.ui.componentes.Paleta.
+ */
+
+.root {
+    -fondo: #0e1318;
+    -superficie: #151c24;
+    -superficie-alta: #1c2530;
+    -borde: #2a3542;
+    -texto: #dbe3ec;
+    -tenue: #7d8a9a;
+    -acento: #f5b942;
+    -ok: #4fcf8d;
+    -falla: #f06a6a;
+
+    -fx-base: #1c2530;
+    -fx-background: -fondo;
+    -fx-control-inner-background: -superficie;
+    -fx-control-inner-background-alt: #18202a;
+    -fx-accent: #3b4b5e;
+    -fx-focus-color: -acento;
+    -fx-faint-focus-color: transparent;
+    -fx-text-base-color: -texto;
+    -fx-text-background-color: -texto;
+    -fx-selection-bar: #33475c;
+    -fx-selection-bar-non-focused: #2a3a4b;
+    -fx-font-family: "Inter", "Segoe UI", "Cantarell", sans-serif;
+    -fx-font-size: 13px;
+}
+
+.raiz { -fx-background-color: -fondo; }
+
+/* ================= Encabezado ================= */
+
+.encabezado {
+    -fx-background-color: -superficie;
+    -fx-border-color: transparent transparent -borde transparent;
+}
+
+.titulo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -texto;
+}
+
+.subtitulo-app {
+    -fx-text-fill: -tenue;
+    -fx-font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+    -fx-font-size: 12px;
+}
+
+/* ================= Pestañas ================= */
+
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: -fondo;
+}
+
+.tab-pane > .tab-header-area {
+    -fx-padding: 8 16 0 16;
+}
+
+.tab {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 6 14 8 14;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab .tab-label { -fx-text-fill: -tenue; -fx-font-size: 13px; }
+.tab:selected { -fx-border-color: -acento; }
+.tab:selected .tab-label { -fx-text-fill: -texto; }
+.tab:selected .focus-indicator { -fx-border-color: transparent; }
+
+.sub-pestanias .tab { -fx-padding: 4 10 6 10; }
+
+/* ================= Paneles y tarjetas ================= */
+
+.panel { -fx-background-color: -fondo; }
+
+.tarjeta {
+    -fx-background-color: -fondo;
+    -fx-border-color: -borde;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+}
+
+.split-pane { -fx-background-color: transparent; -fx-padding: 0; }
+.split-pane > .split-pane-divider { -fx-background-color: -borde; -fx-padding: 0 1 0 1; }
+
+.etiqueta { -fx-text-fill: -tenue; }
+.tenue { -fx-text-fill: -tenue; }
+
+.subtitulo {
+    -fx-text-fill: -texto;
+    -fx-font-weight: bold;
+}
+
+.titulo-bloque {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -acento;
+}
+
+.titulo-dato {
+    -fx-text-fill: -tenue;
+    -fx-font-size: 10px;
+}
+
+.valor-dato {
+    -fx-text-fill: -texto;
+    -fx-font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+    -fx-font-size: 13px;
+}
+
+.mono, .mono-tabla .table-cell {
+    -fx-font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+}
+
+.mensaje {
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 6;
+}
+
+.mensaje.error { -fx-background-color: #3a1d22; -fx-text-fill: #ffb4b4; }
+.mensaje.aviso { -fx-background-color: #2c2a1a; -fx-text-fill: #f3dc9b; }
+
+.verificacion { -fx-font-weight: bold; }
+.verificacion.ok, .ok { -fx-text-fill: -ok; }
+.verificacion.falla, .falla { -fx-text-fill: -falla; }
+
+/* ================= Controles ================= */
+
+.button, .toggle-button {
+    -fx-background-color: -superficie-alta;
+    -fx-text-fill: -texto;
+    -fx-background-radius: 6;
+    -fx-border-color: -borde;
+    -fx-border-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+}
+
+.button:hover, .toggle-button:hover { -fx-background-color: #243040; }
+.button:disabled { -fx-opacity: 0.45; }
+
+.button.primario, .toggle-button.primario {
+    -fx-background-color: -acento;
+    -fx-text-fill: #1a1405;
+    -fx-border-color: -acento;
+    -fx-font-weight: bold;
+}
+
+.button.primario:hover, .toggle-button.primario:hover { -fx-background-color: #ffcb5c; }
+.toggle-button.primario:selected { -fx-background-color: #d79a2a; }
+
+.text-field, .text-area, .combo-box, .spinner {
+    -fx-background-color: -superficie;
+    -fx-border-color: -borde;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: -texto;
+    -fx-prompt-text-fill: #56636f;
+}
+
+.text-field:focused, .combo-box:focused { -fx-border-color: -acento; }
+
+.text-area .content { -fx-background-color: -superficie; }
+
+.combo-box .list-cell { -fx-text-fill: -texto; }
+.combo-box-popup .list-view { -fx-background-color: -superficie-alta; }
+
+.slider .track { -fx-background-color: -borde; }
+.slider .thumb { -fx-background-color: -acento; }
+
+.progress-bar .bar { -fx-background-color: -acento; -fx-background-insets: 0; -fx-background-radius: 3; }
+.progress-bar .track { -fx-background-color: -superficie; -fx-background-radius: 3; }
+
+/* ================= Tablas y listas ================= */
+
+.table-view, .list-view {
+    -fx-background-color: -superficie;
+    -fx-border-color: -borde;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.table-view .column-header-background,
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: -superficie-alta;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -tenue;
+    -fx-font-weight: normal;
+}
+
+.table-row-cell { -fx-border-color: transparent; -fx-table-cell-border-color: #1f2833; }
+.table-row-cell.fila-ok .table-cell { -fx-text-fill: -ok; }
+.table-row-cell.fila-falla .table-cell { -fx-text-fill: -falla; }
+
+.catalogo .list-cell {
+    -fx-font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+    -fx-font-size: 15px;
+    -fx-padding: 8 12 8 12;
+}
+
+.scroll-bar { -fx-background-color: transparent; }
+.scroll-bar .thumb { -fx-background-color: #2f3c4b; -fx-background-radius: 4; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button { -fx-padding: 0; -fx-opacity: 0; }

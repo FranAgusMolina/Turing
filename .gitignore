@@ -1,0 +1,4 @@
+rules/*
+material/*
+turing-app.log
+target/

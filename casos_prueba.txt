@@ -1,0 +1,21 @@
+// Casos de prueba – Máquina de Turing que simula el autómata celular Regla 110
+// Formato: entrada ; generación final esperada ; descripción
+// La generación final esperada se calculó aparte aplicando la tabla de la Regla 110 con fronteras cíclicas.
+// ERROR indica que la entrada debe ser rechazada por el validador.
+
+100#000000010000000# ; 000111110000000 ; Ejemplo 1 del enunciado (K=4, N=15)
+1110#01101001# ; 01101110 ; Ejemplo 2 del enunciado (K=14, N=8)
+0#10110010# ; 10110010 ; K=0: no se calcula ninguna generación, la cinta queda igual
+1#11000001# ; 01000011 ; Frontera cíclica izquierda: la celda 0 ve el vecindario 111 usando la última celda
+1#10000010# ; 10000111 ; Frontera cíclica derecha: la última celda ve el vecindario 101 usando la primera
+101#00000000# ; 00000000 ; Todas muertas: la configuración nula es estable (000 → 0)
+101#11111111# ; 00000000 ; Todas vivas: 111 → 0, a la generación siguiente mueren todas
+10#01010101# ; 00000000 ; Patrón alternado
+0011#00100100# ; 10000101 ; K con ceros a la izquierda (K=3)
+1111#0000000000000001# ; 1101011001111101 ; Una sola celda viva en el borde derecho: crecimiento del triángulo hacia la izquierda
+11111#000000000000000000000000000001# ; 110110010011011100111000001101 ; Triángulo de la Regla 110 con N=30 y K=31 (la frontera cíclica entra en juego)
+1100100#10011101011000101101# ; 11011111000111000100 ; K=100 generaciones sobre N=20
+10000000#0001001101111100010011011111# ; 0111110001001101111100010011 ; K=128 sobre N=28: control de iteraciones con contador de 8 bits
+1#0101# ; ERROR ; Entrada inválida: N < 8
+12#00000000# ; ERROR ; Entrada inválida: K no es binario
+101#0000000#0 ; ERROR ; Entrada inválida: formato incorrecto

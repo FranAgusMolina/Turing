@@ -162,7 +162,7 @@ siguiendo los principios SOLID:
 
 | Principio | Aplicación |
 |---|---|
-| SRP | La máquina (`MaquinaTuring`) sólo describe (S, Σ, δ, s0, F); el `MotorTuring` la ejecuta; el `CompiladorDiagrama` la construye; los presentadores sólo traducen entre la vista y el coordinador. |
+| SRP | La máquina (`MaquinaTuring`) sólo describe (S, Σ, δ, s0, F); el `MotorTuring` la ejecuta; el `CompiladorDiagrama` la construye; el presentador sólo traduce entre la vista y el coordinador. |
 | OCP | Nuevos bloques implementan `BloqueTuring` sin tocar el compilador; la Regla 110 se inyecta como `ReglaLocal`, separada del diseño de la MT. |
 | LSP | `SimuladorDirecto` y `SimuladorMaquinaTuring` son intercambiables como `SimuladorAutomata`; todos los bloques se compilan igual. |
 | ISP | Interfaces pequeñas por rol: `Cinta`, `MotorTuring`, `BloqueTuring`, `ReglaLocal`, `CasoPruebaDAO`. |

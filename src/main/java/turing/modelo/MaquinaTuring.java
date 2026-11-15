@@ -1,6 +1,5 @@
 package turing.modelo;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -124,14 +123,5 @@ public final class MaquinaTuring {
      */
     public List<Transicion> getTransiciones() {
         return transiciones;
-    }
-
-    /**
-     * @param estado estado origen
-     * @return las transiciones que salen de ese estado
-     */
-    public List<Transicion> transicionesDesde(Estado estado) {
-        Map<Character, Transicion> porSimbolo = delta.get(estado);
-        return porSimbolo == null ? List.of() : new ArrayList<>(porSimbolo.values());
     }
 }

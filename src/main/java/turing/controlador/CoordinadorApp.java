@@ -12,9 +12,6 @@ import turing.modelo.Alfabeto;
 import turing.modelo.CasoPrueba;
 import turing.modelo.CintaInfinita;
 import turing.modelo.MaquinaTuring;
-import turing.negocio.automata.EntradaAutomata;
-import turing.negocio.automata.EvolucionAutomata;
-import turing.negocio.automata.SimuladorDirecto;
 import turing.negocio.diagrama.CompiladorDiagrama;
 import turing.negocio.diagrama.DiagramaBloques;
 import turing.negocio.motor.MotorTuring;
@@ -114,10 +111,6 @@ public class CoordinadorApp {
         return maquinaService.obtenerDiagrama(regla);
     }
 
-    public MaquinaTuring compilarBloque(String notacion) {
-        return maquinaService.compilarBloque(notacion);
-    }
-
     public MotorTuring nuevoMotor() {
         return maquinaService.nuevoMotor();
     }
@@ -136,32 +129,11 @@ public class CoordinadorApp {
         return result;
     }
 
-    /**
-     * Simulación directa (sin máquina de Turing), usada para verificar resultados.
-     *
-     * @param entrada datos del autómata
-     * @param regla   regla a aplicar
-     * @return la evolución esperada
-     */
-    public EvolucionAutomata simularDirecto(EntradaAutomata entrada, ReglaLocal regla) {
-        return new SimuladorDirecto(regla).simular(entrada);
-    }
-
     public List<CasoPrueba> getCasosPrueba() {
         return casoPruebaService.buscarTodos();
     }
 
     public ResultadoCaso ejecutarCaso(CasoPrueba caso, ReglaLocal regla) {
         return casoPruebaService.ejecutar(caso, regla);
-    }
-
-    // ================= Getters para servicios =================
-
-    public MaquinaService getMaquinaService() {
-        return maquinaService;
-    }
-
-    public CasoPruebaService getCasoPruebaService() {
-        return casoPruebaService;
     }
 }

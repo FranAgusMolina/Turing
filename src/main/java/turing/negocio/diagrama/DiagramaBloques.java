@@ -1,7 +1,6 @@
 package turing.negocio.diagrama;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,21 +125,6 @@ public class DiagramaBloques {
      */
     public List<NodoDiagrama> getNodos() {
         return List.copyOf(nodos.values());
-    }
-
-    /**
-     * @param id id del nodo
-     * @return el nodo o null
-     */
-    public NodoDiagrama getNodo(String id) {
-        return nodos.get(id);
-    }
-
-    /**
-     * @return todas las flechas en orden de inserción
-     */
-    public List<Arco> getArcos() {
-        return Collections.unmodifiableList(arcos);
     }
 
     /**

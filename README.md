@@ -57,7 +57,7 @@ src/main/java/turing/
 │   ├── motor/     MotorTuring + MotorTuringSecuencial
 │   └── regla/     ReglaLocal + Regla110 (tabla de verdad de la regla)
 ├── servicio/      MaquinaService, CasoPruebaService (+ Impl)
-└── ui/            Interfaz, JavaFXLauncher (static bridge), InterfazJavaFXImpl, presentadores y componentes
+└── ui/            Interfaz, JavaFXLauncher (static bridge), InterfazJavaFXImpl, PresentadorSimulacion y componentes
 ```
 
 El informe técnico está en [`docs/INFORME.md`](docs/INFORME.md).

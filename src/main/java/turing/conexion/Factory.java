@@ -103,20 +103,4 @@ public final class Factory {
             throw new RuntimeException("Error Factory al crear: " + clave, ex);
         }
     }
-
-    /**
-     * Limpia completamente el caché de instancias singleton.
-     * Este método elimina todas las instancias almacenadas, forzando la creación
-     * de nuevas instancias en las próximas invocaciones de {@link #getInstancia(String, Class)}.
-     * Es útil principalmente para pruebas unitarias o cuando se necesita reinicializar
-     * el sistema con una configuración diferente.
-     *
-     * <p><strong>Advertencia:</strong> Este método debe usarse con precaución en entornos
-     * de producción, ya que puede afectar el rendimiento y el estado de la aplicación.</p>
-     */
-    public static void clearCache() {
-        INSTANCIAS.clear();
-        LOG.info("Cache de Factory limpiado");
-    }
-
 }

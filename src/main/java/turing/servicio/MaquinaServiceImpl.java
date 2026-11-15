@@ -60,14 +60,6 @@ public class MaquinaServiceImpl implements MaquinaService {
     }
 
     @Override
-    public MaquinaTuring compilarBloque(String notacion) {
-        DiagramaBloques diagrama = new DiagramaBloques("Bloque " + notacion)
-                .nodo("B", notacion, "Bloque bajo prueba")
-                .arco("B", DiagramaBloques.CUALQUIERA, DiagramaBloques.ALTO);
-        return compilador.compilar(diagrama, alfabeto);
-    }
-
-    @Override
     public MotorTuring nuevoMotor() {
         return fabricaMotor.get();
     }

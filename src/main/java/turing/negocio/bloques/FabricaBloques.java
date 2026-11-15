@@ -1,7 +1,6 @@
 package turing.negocio.bloques;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,9 +18,6 @@ import java.util.Set;
  * @version 1.0
  */
 public final class FabricaBloques {
-
-    /** Notaciones de los bloques que ofrece la cátedra, en el orden de la diapositiva. */
-    public static final List<String> CATALOGO = List.of("L", "R", "x", "Rx", "Lx", "SR", "SL");
 
     private FabricaBloques() {
         throw new AssertionError("No instanciable");

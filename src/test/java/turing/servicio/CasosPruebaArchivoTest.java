@@ -23,7 +23,7 @@ class CasosPruebaArchivoTest {
     void todosLosCasosDelArchivoSonCorrectos() {
         CoordinadorApp coordinador = new CoordinadorApp();
         coordinador.inicializarServicios();
-        ReglaLocal regla = coordinador.crearRegla(110);
+        ReglaLocal regla = coordinador.crearRegla();
         List<CasoPrueba> someCases = coordinador.getCasosPrueba();
         assertFalse(someCases.isEmpty());
         for (CasoPrueba aCase : someCases) {

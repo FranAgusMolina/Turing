@@ -28,7 +28,7 @@ public class MaquinaServiceImpl implements MaquinaService {
     private final Alfabeto alfabeto;
     private final CompiladorDiagrama compilador;
     private final Supplier<MotorTuring> fabricaMotor;
-    private final Map<Integer, MaquinaTuring> cache = new ConcurrentHashMap<>();
+    private final Map<String, MaquinaTuring> cache = new ConcurrentHashMap<>();
 
     /**
      * Constructor con inyección de dependencias.
@@ -51,7 +51,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 
     @Override
     public MaquinaTuring obtenerMaquina(ReglaLocal regla) {
-        return cache.computeIfAbsent(regla.getNumero(), numero -> {
+        return cache.computeIfAbsent(regla.getNombre(), nombre -> {
             MaquinaTuring result = compilador.compilar(obtenerDiagrama(regla), alfabeto);
             LOG.info("Compilada {}: {} estados, {} transiciones",
                     result.getNombre(), result.getEstados().size(), result.getTransiciones().size());

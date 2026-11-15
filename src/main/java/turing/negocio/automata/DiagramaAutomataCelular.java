@@ -41,8 +41,8 @@ import turing.negocio.regla.ReglaLocal;
  *   <li><b>Cerrar la generación</b>: se desmarca Gt, se escribe # al final de Gt+1 y se
  *       vuelve al contador.</li>
  * </ol>
- * La regla se inyecta (OCP): el mismo diseño sirve para cualquier regla elemental,
- * sólo cambia a qué rama de escritura (0 o 1) lleva cada uno de los 8 vecindarios.
+ * La Regla 110 se inyecta: decide a qué rama de escritura (0 o 1) lleva cada uno de los
+ * 8 vecindarios.
  *
  * @author Francisco Agustin Molina
  * @version 1.0

@@ -20,7 +20,6 @@ JavaFX, JUnit y Log4j los descarga Maven.
 mvn javafx:run            # interfaz gráfica
 mvn test                  # pruebas (bloques, máquina vs. simulación directa, casos del .txt)
 mvn compile exec:java     # genera docs/diagrama_bloques.md, docs/tabla_transiciones.md y docs/resultados_casos.md
-mvn compile exec:java -Dexec.args="30"   # lo mismo para otra regla
 ```
 
 ## Formato de la cinta
@@ -32,18 +31,15 @@ salida:   0…0#G0#G1#…#GK#      el contador queda en 0 y la cinta conserva to
 
 `casos_prueba.txt` tiene un caso por línea: `entrada ; generación final esperada ; descripción`.
 
-## Pestañas de la interfaz
+## Interfaz
 
-| Pestaña | Qué muestra |
-|---|---|
-| Simulación | Cinta con la cabeza y el estado, controles (paso, reproducir, siguiente generación, hasta el final), diagrama espacio-tiempo que se va formando y tabla δ con la transición aplicada |
-| Patrón triangular | Ejecuta la MT con N y K grandes en segundo plano, dibuja el triángulo y lo verifica contra la simulación directa |
-| Máquina (diagrama y δ) | El diagrama de bloques del diseño y la tabla δ compilada |
-| Bloques de construcción | Laboratorio para ejecutar cada bloque (L, R, x, Rx, Lx, SR, SL) por separado y ver su δ |
-| Casos de prueba | Ejecuta todos los casos de `casos_prueba.txt` |
+Una única pantalla de simulación: cinta con la cabeza y el estado, controles (paso, reproducir,
+siguiente generación, hasta el final), diagrama espacio-tiempo que se va formando y tabla δ con la
+transición aplicada.
 
-El selector de regla del encabezado permite cambiar a otras reglas elementales (101, 30, 90, …): el diseño de la
-máquina es el mismo, sólo cambia a qué rama de escritura lleva cada vecindario.
+Las marcas temporales que deja la máquina se dibujan en la cinta como una **X** cuyo color indica el
+tipo de marca: una para el `0` ya procesado (símbolo `o` en δ) y otra para el `1` ya procesado
+(símbolo `i` en δ).
 
 ## Estructura (MVC)
 
@@ -59,7 +55,7 @@ src/main/java/turing/
 │   ├── diagrama/  DiagramaBloques (composición de bloques) y CompiladorDiagrama (→ tabla δ)
 │   ├── automata/  DiagramaAutomataCelular (el diseño de la MT), codificación de la cinta, simuladores
 │   ├── motor/     MotorTuring + MotorTuringSecuencial
-│   └── regla/     ReglaLocal + ReglaElemental (número de Wolfram)
+│   └── regla/     ReglaLocal + Regla110 (tabla de verdad de la regla)
 ├── servicio/      MaquinaService, CasoPruebaService (+ Impl)
 └── ui/            Interfaz, JavaFXLauncher (static bridge), InterfazJavaFXImpl, presentadores y componentes
 ```

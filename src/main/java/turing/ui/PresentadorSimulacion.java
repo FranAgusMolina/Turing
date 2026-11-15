@@ -20,7 +20,7 @@ import turing.negocio.regla.ReglaLocal;
 import turing.ui.componentes.PanelSimulacion;
 
 /**
- * Presentador de la pestaña "Simulación": carga la cinta, maneja los controles de
+ * Presentador de la pantalla de simulación: carga la cinta, maneja los controles de
  * ejecución y traduce la configuración instantánea del motor a la vista.
  *
  * @author Francisco Agustin Molina
@@ -47,7 +47,7 @@ public class PresentadorSimulacion {
     private final CoordinadorApp coordinador;
     private final EjecutorAnimado ejecutor;
 
-    private ReglaLocal regla;
+    private final ReglaLocal regla;
     private String entradaCargada;
     private EntradaAutomata entrada;
     private MotorTuring motor;
@@ -92,26 +92,13 @@ public class PresentadorSimulacion {
     }
 
     /**
-     * Carga una cinta desde otra pestaña (por ejemplo, un caso de prueba).
+     * Carga una cinta y la deja lista para ejecutar.
      *
      * @param texto cinta de entrada
      */
     public void cargarTexto(String texto) {
         panel.getCampoCinta().setText(texto);
         cargar(texto);
-    }
-
-    /**
-     * Cambia la regla y recarga la cinta actual con la nueva máquina.
-     *
-     * @param nueva nueva regla
-     */
-    public void setRegla(ReglaLocal nueva) {
-        this.regla = nueva;
-        panel.getTablaTransiciones().mostrar(coordinador.obtenerMaquina(regla));
-        if (entradaCargada != null) {
-            cargar(entradaCargada);
-        }
     }
 
     private void cargar(String texto) {

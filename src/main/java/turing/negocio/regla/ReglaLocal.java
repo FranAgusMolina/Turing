@@ -3,6 +3,7 @@ package turing.negocio.regla;
 /**
  * Función de transición local de un autómata celular unidimensional de radio 1:
  * dado el vecindario (izquierda, centro, derecha) devuelve el nuevo valor de la celda central.
+ * La única implementación es {@link Regla110}.
  *
  * @author Francisco Agustin Molina
  * @version 1.0
@@ -18,14 +19,7 @@ public interface ReglaLocal {
     int siguiente(int izquierda, int centro, int derecha);
 
     /**
-     * @return número de Wolfram de la regla (0..255)
-     */
-    int getNumero();
-
-    /**
      * @return nombre legible, por ejemplo "Regla 110"
      */
-    default String getNombre() {
-        return "Regla " + getNumero();
-    }
+    String getNombre();
 }

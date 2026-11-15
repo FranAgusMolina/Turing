@@ -9,7 +9,6 @@ import javafx.concurrent.Task;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import turing.aplicacion.Constantes;
 import turing.controlador.CoordinadorApp;
 import turing.negocio.regla.ReglaLocal;
 import turing.servicio.ResultadoCaso;
@@ -41,7 +40,7 @@ public class PresentadorCasos {
     public PresentadorCasos(PanelCasos panel, CoordinadorApp coordinador, Consumer<String> abrirEnSimulacion) {
         this.panel = panel;
         this.coordinador = coordinador;
-        this.regla = coordinador.crearRegla(Constantes.REGLA_POR_DEFECTO);
+        this.regla = coordinador.crearRegla();
         panel.getBotonRecargar().setOnAction(evento -> cargar());
         panel.getBotonEjecutar().setOnAction(evento -> ejecutarTodos());
         panel.getBotonAbrir().setOnAction(evento -> abrirSeleccionado(abrirEnSimulacion));

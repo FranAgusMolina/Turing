@@ -1,6 +1,5 @@
 package turing.controlador;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +19,7 @@ import turing.negocio.diagrama.CompiladorDiagrama;
 import turing.negocio.diagrama.DiagramaBloques;
 import turing.negocio.motor.MotorTuring;
 import turing.negocio.motor.MotorTuringSecuencial;
-import turing.negocio.regla.ReglaElemental;
+import turing.negocio.regla.Regla110;
 import turing.negocio.regla.ReglaLocal;
 import turing.servicio.CasoPruebaService;
 import turing.servicio.CasoPruebaServiceImpl;
@@ -101,18 +100,10 @@ public class CoordinadorApp {
     // ================= Operaciones para la vista =================
 
     /**
-     * @param numero número de Wolfram
-     * @return la regla correspondiente
+     * @return la Regla 110, la única que simula la máquina
      */
-    public ReglaLocal crearRegla(int numero) {
-        return new ReglaElemental(numero);
-    }
-
-    /**
-     * @return números de regla ofrecidos en la interfaz
-     */
-    public List<Integer> getReglasDisponibles() {
-        return Arrays.stream(Constantes.REGLAS_DISPONIBLES).boxed().toList();
+    public ReglaLocal crearRegla() {
+        return new Regla110();
     }
 
     public MaquinaTuring obtenerMaquina(ReglaLocal regla) {

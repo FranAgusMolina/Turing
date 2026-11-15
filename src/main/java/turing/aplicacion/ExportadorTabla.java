@@ -24,7 +24,7 @@ import turing.servicio.ResultadoCaso;
  *   <li>docs/tabla_transiciones.md: la tabla δ completa</li>
  *   <li>docs/resultados_casos.md: la ejecución de todos los casos de prueba</li>
  * </ul>
- * Uso: {@code mvn compile exec:java [-Dexec.args="110"]}
+ * Uso: {@code mvn compile exec:java}
  *
  * @author Francisco Agustin Molina
  * @version 1.0
@@ -32,10 +32,9 @@ import turing.servicio.ResultadoCaso;
 public class ExportadorTabla {
 
     public static void main(String[] args) throws IOException {
-        int numero = args.length > 0 ? Integer.parseInt(args[0]) : Constantes.REGLA_POR_DEFECTO;
         CoordinadorApp coordinador = new CoordinadorApp();
         coordinador.inicializarServicios();
-        ReglaLocal regla = coordinador.crearRegla(numero);
+        ReglaLocal regla = coordinador.crearRegla();
 
         Path carpeta = Path.of("docs");
         Files.createDirectories(carpeta);

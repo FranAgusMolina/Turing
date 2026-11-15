@@ -12,7 +12,8 @@ import turing.modelo.Cinta;
 
 /**
  * Dibuja la cinta infinita centrada en la cabeza lecto-escritora, con el estado
- * actual de la unidad de control sobre la cabeza.
+ * actual de la unidad de control sobre la cabeza. Las marcas temporales de la
+ * máquina se muestran como una X cuyo color indica el tipo de marca.
  *
  * @author Francisco Agustin Molina
  * @version 1.0
@@ -23,14 +24,16 @@ public class VistaCinta extends LienzoRedimensionable {
     private static final double SEPARACION = 3;
     private static final Font FUENTE_SIMBOLO = Font.font("Monospaced", FontWeight.BOLD, 17);
     private static final Font FUENTE_INDICE = Font.font("Monospaced", 9);
+    private static final Font FUENTE_LEYENDA = Font.font("Monospaced", 11);
+    private static final char MARCA = 'X';
     private static final Font FUENTE_ESTADO = Font.font("Monospaced", FontWeight.BOLD, 13);
 
     private Cinta cinta;
     private String estado = "";
 
     public VistaCinta() {
-        setMinHeight(118);
-        setPrefHeight(118);
+        setMinHeight(132);
+        setPrefHeight(132);
     }
 
     /**
@@ -64,6 +67,24 @@ public class VistaCinta extends LienzoRedimensionable {
             contexto.fillText(String.valueOf(aPosition), x + LADO / 2, y + LADO + 10);
         }
         dibujarCabeza(contexto, centroX, y);
+        dibujarLeyenda(contexto, y + LADO + 34);
+    }
+
+    private void dibujarLeyenda(GraphicsContext contexto, double y) {
+        contexto.setTextAlign(TextAlignment.LEFT);
+        double x = 4;
+        x = dibujarEntradaLeyenda(contexto, x, y, Paleta.MARCA_CERO, "0 ya procesado");
+        dibujarEntradaLeyenda(contexto, x, y, Paleta.MARCA_UNO, "1 ya procesado");
+    }
+
+    private double dibujarEntradaLeyenda(GraphicsContext contexto, double x, double y, Color color, String texto) {
+        contexto.setFont(FUENTE_ESTADO);
+        contexto.setFill(color);
+        contexto.fillText(String.valueOf(MARCA), x, y);
+        contexto.setFont(FUENTE_LEYENDA);
+        contexto.setFill(Paleta.TEXTO_TENUE);
+        contexto.fillText(texto, x + 14, y);
+        return x + 14 + texto.length() * 7 + 22;
     }
 
     private void dibujarCelda(GraphicsContext contexto, double x, double y, char simbolo, boolean bajoCabeza) {
@@ -74,7 +95,7 @@ public class VistaCinta extends LienzoRedimensionable {
         contexto.strokeRoundRect(x, y, LADO, LADO, 6, 6);
         contexto.setFont(FUENTE_SIMBOLO);
         contexto.setFill(colorDe(simbolo));
-        contexto.fillText(String.valueOf(simbolo), x + LADO / 2, y + LADO / 2 + 1);
+        contexto.fillText(String.valueOf(esMarca(simbolo) ? MARCA : simbolo), x + LADO / 2, y + LADO / 2 + 1);
     }
 
     private void dibujarCabeza(GraphicsContext contexto, double centroX, double y) {
@@ -92,10 +113,15 @@ public class VistaCinta extends LienzoRedimensionable {
                 : Paleta.SUPERFICIE;
     }
 
+    private static boolean esMarca(char simbolo) {
+        return simbolo == Constantes.CERO_MARCADO || simbolo == Constantes.UNO_MARCADO;
+    }
+
     private Color colorDe(char simbolo) {
         return switch (simbolo) {
             case Constantes.SEPARADOR -> Paleta.SEPARADOR;
-            case Constantes.CERO_MARCADO, Constantes.UNO_MARCADO -> Paleta.MARCADA;
+            case Constantes.CERO_MARCADO -> Paleta.MARCA_CERO;
+            case Constantes.UNO_MARCADO -> Paleta.MARCA_UNO;
             case Constantes.BLANCO -> Paleta.TEXTO_TENUE.deriveColor(0, 1, 1, 0.45);
             default -> Paleta.TEXTO;
         };

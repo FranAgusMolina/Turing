@@ -31,7 +31,7 @@ public class PresentadorPatron {
 
     private final PanelPatron panel;
     private final CoordinadorApp coordinador;
-    private ReglaLocal regla;
+    private final ReglaLocal regla;
     private Task<EvolucionAutomata> tarea;
 
     /**
@@ -47,16 +47,6 @@ public class PresentadorPatron {
         this.regla = regla;
         panel.getBotonGenerar().setOnAction(evento -> generar());
         panel.getBotonCancelar().setOnAction(evento -> cancelar());
-    }
-
-    /**
-     * @param nueva regla con la que se generarán los próximos patrones
-     */
-    public void setRegla(ReglaLocal nueva) {
-        cancelar();
-        this.regla = nueva;
-        panel.getVerificacion().setText("");
-        panel.getEstado().setText(regla.getNombre() + " seleccionada. Generá el patrón para verlo.");
     }
 
     private void generar() {

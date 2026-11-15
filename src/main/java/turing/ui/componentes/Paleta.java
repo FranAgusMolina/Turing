@@ -25,8 +25,11 @@ public final class Paleta {
     /** Celda muerta del autómata. */
     public static final Color MUERTA = Color.web("#18212b");
 
-    /** Celdas marcadas (o, i) por la máquina. */
-    public static final Color MARCADA = Color.web("#3cc2b0");
+    /** Marca X sobre una celda muerta ya procesada (símbolo o). */
+    public static final Color MARCA_CERO = Color.web("#3cc2b0");
+
+    /** Marca X sobre una celda viva ya procesada (símbolo i). */
+    public static final Color MARCA_UNO = Color.web("#ff7a6b");
 
     /** Separadores #. */
     public static final Color SEPARADOR = Color.web("#a48cf0");

@@ -100,8 +100,7 @@ vecino izquierdo de la siguiente celda y como vecino derecho cíclico de la últ
 
 ### 3.4 Diagrama de bloques
 
-El diagrama completo tiene 51 nodos (se puede ver en la pestaña *Máquina* de la aplicación y en
-`docs/diagrama_bloques.md`). Resumido por fases (`*` = cualquier símbolo):
+El diagrama completo tiene 51 nodos (se puede ver en `docs/diagrama_bloques.md`). Resumido por fases (`*` = cualquier símbolo):
 
 ```
 CONTADOR      INICIO: R#  ─*→  DEC: L  ─0→  DEC_1: 1 ─*→ DEC
@@ -154,12 +153,6 @@ aplicación (con filtro por estado o bloque). Si en algún momento δ no está d
 máquina se detiene de forma **anómala**, lo que sirve como detector de errores de diseño (nunca ocurre en las
 pruebas).
 
-### 3.6 Cambio de regla
-
-Como la regla sólo decide a qué rama de escritura va cada uno de los 8 vecindarios, el mismo diseño sirve para
-cualquiera de las 256 reglas elementales. La aplicación ofrece además las reglas 101, 30, 90, 54, 150 y 184
-para comparar patrones.
-
 ## 4. Metodología
 
 ### 4.1 Arquitectura del software
@@ -170,7 +163,7 @@ siguiendo los principios SOLID:
 | Principio | Aplicación |
 |---|---|
 | SRP | La máquina (`MaquinaTuring`) sólo describe (S, Σ, δ, s0, F); el `MotorTuring` la ejecuta; el `CompiladorDiagrama` la construye; los presentadores sólo traducen entre la vista y el coordinador. |
-| OCP | Nuevos bloques implementan `BloqueTuring` sin tocar el compilador; nuevas reglas implementan `ReglaLocal` sin tocar el diseño de la MT. |
+| OCP | Nuevos bloques implementan `BloqueTuring` sin tocar el compilador; la Regla 110 se inyecta como `ReglaLocal`, separada del diseño de la MT. |
 | LSP | `SimuladorDirecto` y `SimuladorMaquinaTuring` son intercambiables como `SimuladorAutomata`; todos los bloques se compilan igual. |
 | ISP | Interfaces pequeñas por rol: `Cinta`, `MotorTuring`, `BloqueTuring`, `ReglaLocal`, `CasoPruebaDAO`. |
 | DIP | El coordinador ensambla las dependencias; el DAO se elige por `factory.properties`; los servicios reciben el compilador y la fábrica de motores por constructor. |
@@ -180,7 +173,7 @@ siguiendo los principios SOLID:
 - **Pruebas unitarias de cada bloque** (`BloquesTuringTest`): R, L, x, Rx, Lx, SR y SL ejecutados como máquinas
   independientes.
 - **Oráculo independiente:** `SimuladorDirecto` aplica la regla con un bucle común. La MT se compara contra él
-  en entradas aleatorias (N de 1 a 20, K de 0 a 7) para las reglas 110, 101, 30, 90, 54, 184, 0 y 255.
+  en 100 entradas aleatorias (N de 1 a 20, K de 0 a 7).
 - **Ejemplos del enunciado** y casos dirigidos a las fronteras cíclicas (vecindarios que sólo existen si los
   extremos son adyacentes: 111 en la celda 0 y 101 en la celda N−1).
 - **Casos de prueba del archivo** `casos_prueba.txt`, cuyos valores esperados se calcularon por separado.

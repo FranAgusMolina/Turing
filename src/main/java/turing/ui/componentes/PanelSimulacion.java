@@ -18,7 +18,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 /**
- * Vista de la pestaña "Simulación": cinta, controles de ejecución, diagrama
+ * Vista de la pantalla de simulación: cinta, controles de ejecución, diagrama
  * espacio-tiempo que se va formando y tabla δ con la transición aplicada.
  * Sólo construye controles; el comportamiento está en PresentadorSimulacion.
  *
